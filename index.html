@@ -154,6 +154,8 @@
 
                 for (var i=1; i<csvTextLines.length; i++) {
                     var data = csvTextLines[i].split(',');
+
+                    console.log(data)
                     if(isOriginal)
                     {
                         dictionary[data[0]] = data[3]
