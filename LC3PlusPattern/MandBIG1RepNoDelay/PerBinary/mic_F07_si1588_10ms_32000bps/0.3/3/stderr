@@ -1,0 +1,14 @@
+
+ Static memory usage = 3.92 kWords (7832 bytes)
+ Detailed Memory Usage
+ Encoder                                 0 bytes (+          0 bytes)
+ Decoder                              7832 bytes (+       7832 bytes)
+
+ Maximum dynamic memory usage = 0.69 kWords (1376 bytes)
+ Critical Memory Usage Path
+ ---Top---                               0 bytes (+          0 bytes)
+ Dec_LC3_Channel                       224 bytes (+        224 bytes)
+ processPLCapply_fx                    352 bytes (+        128 bytes)
+ hq_phase_ecu_fx                       440 bytes (+         88 bytes)
+ subst_spec_fx                        1360 bytes (+        920 bytes)
+ rand_phase_fx                        1376 bytes (+         16 bytes)

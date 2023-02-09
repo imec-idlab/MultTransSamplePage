@@ -1,0 +1,15 @@
+
+ Static memory usage = 3.92 kWords (7832 bytes)
+ Detailed Memory Usage
+ Encoder                                 0 bytes (+          0 bytes)
+ Decoder                              7832 bytes (+       7832 bytes)
+
+ Maximum dynamic memory usage = 0.38 kWords (744 bytes)
+ Critical Memory Usage Path
+ ---Top---                               0 bytes (+          0 bytes)
+ Dec_LC3_Channel                       224 bytes (+        224 bytes)
+ processPLCapply_fx                    352 bytes (+        128 bytes)
+ processInverseODFT_fx                 408 bytes (+         56 bytes)
+ BASOP_rfftN                           472 bytes (+         64 bytes)
+ fft40                                 688 bytes (+        216 bytes)
+ fft5                                  744 bytes (+         56 bytes)

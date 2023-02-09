@@ -1,0 +1,165 @@
+********************************************************************************
+                   Low Complexity Communication Codec - LC3
+                          Release V1.4.17B, Jul 15 2020
+
+ (C) Copyright Ericsson AB and Fraunhofer Gesellschaft zur Foerderung der
+ angewandten Forschung e.V. for its Fraunhofer IIS 2019
+
+ All Rights Reserved. This software and/or program is protected by copyright
+ law and international treaties and may solely be used in accordance with the
+ specification process and guidelines as set forth by Bluetooth SIG.
+
+ No part of this software may be reproduced in any form without the written
+ permission of the copyright owners.
+********************************************************************************
+
+Using error pattern file for frame loss simulation!
+Using only decoder!
+
+Encoder size:       0
+Decoder size:       1868
+Scratch size:       2672
+Sample rate:        16000
+Channels:           1
+Signal length:      34304
+Frame length:       160
+Output format:      16 bits
+Target bitrate:     32000
+PLC mode:               0
+
+Processing frame 1Processing frame 2Processing frame 3Processing frame 4Processing frame 5Processing frame 6Processing frame 7Processing frame 8Processing frame 9Processing frame 10Processing frame 11Processing frame 12Processing frame 13Processing frame 14Processing frame 15Processing frame 16Processing frame 17Processing frame 18Processing frame 19Processing frame 20Processing frame 21Processing frame 22Processing frame 23Processing frame 24Processing frame 25Processing frame 26Processing frame 27Processing frame 28Processing frame 29Processing frame 30Processing frame 31Processing frame 32Processing frame 33Processing frame 34Processing frame 35Processing frame 36Processing frame 37Processing frame 38Processing frame 39Processing frame 40Processing frame 41Processing frame 42Processing frame 43Processing frame 44Processing frame 45Processing frame 46Processing frame 47Processing frame 48Processing frame 49Processing frame 50Processing frame 51Processing frame 52Processing frame 53Processing frame 54Processing frame 55Processing frame 56Processing frame 57Processing frame 58Processing frame 59Processing frame 60Processing frame 61Processing frame 62Processing frame 63Processing frame 64Processing frame 65Processing frame 66Processing frame 67Processing frame 68Processing frame 69Processing frame 70Processing frame 71Processing frame 72Processing frame 73Processing frame 74Processing frame 75Processing frame 76Processing frame 77Processing frame 78Processing frame 79Processing frame 80Processing frame 81Processing frame 82Processing frame 83Processing frame 84Processing frame 85Processing frame 86Processing frame 87Processing frame 88Processing frame 89Processing frame 90Processing frame 91Processing frame 92Processing frame 93Processing frame 94Processing frame 95Processing frame 96Processing frame 97Processing frame 98Processing frame 99Processing frame 100Processing frame 101Processing frame 102Processing frame 103Processing frame 104Processing frame 105Processing frame 106Processing frame 107Processing frame 108Processing frame 109Processing frame 110Processing frame 111Processing frame 112Processing frame 113Processing frame 114Processing frame 115Processing frame 116Processing frame 117Processing frame 118Processing frame 119Processing frame 120Processing frame 121Processing frame 122Processing frame 123Processing frame 124Processing frame 125Processing frame 126Processing frame 127Processing frame 128Processing frame 129Processing frame 130Processing frame 131Processing frame 132Processing frame 133Processing frame 134Processing frame 135Processing frame 136Processing frame 137Processing frame 138Processing frame 139Processing frame 140Processing frame 141Processing frame 142Processing frame 143Processing frame 144Processing frame 145Processing frame 146Processing frame 147Processing frame 148Processing frame 149Processing frame 150Processing frame 151Processing frame 152Processing frame 153Processing frame 154Processing frame 155Processing frame 156Processing frame 157Processing frame 158Processing frame 159Processing frame 160Processing frame 161Processing frame 162Processing frame 163Processing frame 164Processing frame 165Processing frame 166Processing frame 167Processing frame 168Processing frame 169Processing frame 170Processing frame 171Processing frame 172Processing frame 173Processing frame 174Processing frame 175Processing frame 176Processing frame 177Processing frame 178Processing frame 179Processing frame 180Processing frame 181Processing frame 182Processing frame 183Processing frame 184Processing frame 185Processing frame 186Processing frame 187Processing frame 188Processing frame 189Processing frame 190Processing frame 191Processing frame 192Processing frame 193Processing frame 194Processing frame 195Processing frame 196Processing frame 197Processing frame 198Processing frame 199Processing frame 200Processing frame 201Processing frame 202Processing frame 203Processing frame 204Processing frame 205Processing frame 206Processing frame 207Processing frame 208Processing frame 209Processing frame 210Processing frame 211Processing frame 212Processing frame 213Processing frame 214Processing frame 215
+Processing done!
+0 samples clipped!
+
+Instruction Type Analysis (for worst case frame number 215):
+
+	             add:                224225
+	             sub:                166608
+	           abs_s:                 33440
+	             shl:                 49345
+	             shr:                 54295
+	       extract_h:                     0
+	       extract_l:                 12338
+	            mult:                   960
+	          L_mult:                 19584
+	          negate:                  7839
+	           round:                127502
+	           L_mac:                 48720
+	           L_msu:                 32480
+	         L_macNs:                     0
+	         L_msuNs:                     0
+	           L_add:                269048
+	           L_sub:                315215
+	         L_add_c:                     0
+	         L_sub_c:                     0
+	        L_negate:                 52138
+	           L_shl:                236032
+	           L_shr:                278490
+	          mult_r:                 42786
+	           shr_r:                   209
+	           mac_r:                 13376
+	           msu_r:                 21334
+	     L_deposit_h:                 90300
+	     L_deposit_l:                 10862
+	         L_shr_r:                     0
+	           L_abs:                     0
+	           L_sat:                     0
+	          norm_s:                  1728
+	           div_s:                     0
+	          norm_l:                  1639
+	          move16:                473781
+	          move32:                393319
+	         Logic16:                     0
+	         Logic32:                     0
+	            Test:                 17539
+	           s_max:                 50568
+	           s_min:                 38678
+	           L_max:                 67451
+	           L_min:                 40869
+	         L40_max:                     0
+	         L40_min:                     0
+	           shl_r:                     0
+	         L_shl_r:                     0
+	       L40_shr_r:                     0
+	       L40_shl_r:                     0
+	        norm_L40:                     0
+	         L40_shl:                     0
+	         L40_shr:                     0
+	      L40_negate:                     0
+	         L40_add:                     0
+	         L40_sub:                     0
+	         L40_abs:                     0
+	        L40_mult:                     0
+	         L40_mac:                     0
+	         mac_r40:                     0
+	         L40_msu:                     0
+	         msu_r40:                     0
+	    Mpy_32_16_ss:                508393
+	    Mpy_32_32_ss:                   836
+	         L_mult0:                   627
+	          L_mac0:                 46625
+	          L_msu0:                     0
+	            lshl:                 39886
+	            lshr:                     0
+	          L_lshl:                 10776
+	          L_lshr:                 17803
+	        L40_lshl:                     0
+	        L40_lshr:                     0
+	           s_and:                 86604
+	            s_or:                  1162
+	           s_xor:                     0
+	           L_and:                  7502
+	            L_or:                   627
+	           L_xor:                     0
+	            rotl:                     0
+	            rotr:                     0
+	          L_rotl:                     0
+	          L_rotr:                     0
+	         L40_set:                     0
+	   L40_deposit_h:                     0
+	   L40_deposit_l:                     0
+	   L40_deposit32:                     0
+	     Extract40_H:                     0
+	     Extract40_L:                     0
+	     L_Extract40:                     0
+	       L40_round:                     0
+	    L_saturate40:                     0
+	         round40:                     0
+	              IF:                142728
+	            GOTO:                   209
+	           BREAK:                  2385
+	          SWITCH:                  1499
+	             FOR:                 68188
+	           WHILE:                 24601
+	        CONTINUE:                     0
+	           L_mls:                     0
+	           div_l:                     0
+	          i_mult:                   209
+
+
+Weighted MOPS Analysis:
+                                          |---- CALLS ----| |-----------  SELF  -----------|  |--------  CUMULATIVE  --------|
+                  routine                    avg      wf       min     max     avg     wf        min     max     avg     wf  
+ ------------------------                  ------   ------   ------  ------  ------  ------    ------  ------  ------  ------
+Decoder                                      1.00        1    0.000   0.000   0.000   0.000 |   1.149   3.947   2.666   3.947
+Dec(bfi=0)                                   0.97        1    0.002   0.002   0.002   0.002 |   2.173   3.359   2.413   3.359
+Dec(bfi=1)                                   0.03        0    0.002   0.002   0.002   0.000 |   1.022   1.023   1.022  -0.000
+Imdct                                        1.00        1    0.941   0.942   0.942   0.942 |   0.941   0.942   0.942   0.942
+Ari dec                                      1.00        1    0.000   0.810   0.712   0.722 |   0.000   0.810   0.712   0.722
+LtpfDec                                      1.00        1    0.062   0.554   0.227   0.523 |   0.062   0.554   0.227   0.523
+Tns_dec                                      0.97        1    0.003   1.022   0.132   1.022 |   0.003   1.022   0.132   1.022
+Mdct shaping_dec                             0.97        1    0.120   0.120   0.120   0.120 |   0.120   0.120   0.120   0.120
+scfdec_stage2_fx                             0.97        1    0.035   0.040   0.038   0.040 |   0.081   0.129   0.109   0.108
+SnsQuantScfDec                               1.00        1    0.000   0.003   0.003   0.003 |   0.000   0.132   0.109   0.111
+Noisefill                                    0.97        1    0.021   0.184   0.092   0.141 |   0.021   0.184   0.092   0.141
+Entropy dec                                  1.00        1    0.000   0.079   0.073   0.078 |   0.000   0.079   0.073   0.078
+applyGlobalGain                              0.97        1    0.068   0.068   0.068   0.068 |   0.068   0.068   0.068   0.068
+Output scaling                               1.00        1    0.065   0.065   0.065   0.065 |   0.065   0.065   0.065   0.065
+SnsInterpScfDec                              0.97        1    0.057   0.057   0.057   0.057 |   0.057   0.057   0.057   0.057
+PLC::Main                                    1.00        1    0.050   0.076   0.051   0.050 |   0.051   0.077   0.052   0.051
+mpvq_deindex_fx                              1.48        2    0.046   0.091   0.072   0.068 |   0.003   0.091   0.041   0.068
+Residual dec                                 0.97        1    0.002   0.162   0.030   0.045 |   0.002   0.162   0.030   0.045
+PLC::Update                                  1.00        1    0.001   0.001   0.001   0.001 |   0.001   0.001   0.001   0.001
+PLC::processPLCclassify_fx                   1.00        1    0.000   0.001   0.001   0.000 |   0.000   0.001   0.001   0.000
+ -----------------                         ------            ------  ------  ------  ------
+total                                      215.00             1.149   3.947   2.666   3.947

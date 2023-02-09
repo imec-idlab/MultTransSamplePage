@@ -1,0 +1,399 @@
+<html lang="en">
+
+<head>
+    <title>Audio Samples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+        .logo {
+            margin-left: 5px;
+        }
+
+        .case {
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        body {
+            margin: 20;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #topBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        #topBtn:hover {
+            background-color: #3265C2;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: center;
+            background-color: #3265C2;
+            color: white;
+            height: 30px;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        tr {
+            border-bottom: 2px solid black;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+
+    <!-- <div>
+        
+    </div> -->
+
+    <!-- <div class="row">
+        
+    </div> -->
+
+    <div class="logo">
+        <img src="./img/logo_ugent.png" style="width:10em; height:8em;transform:translateY(-25%);">
+        <img src="./img/logo_imec.png" style="width:8em; height:3em;transform:translateY(-150%);">
+        <img src="./img/logo_IDLab.png" style="width:16em; height:12em;">
+    </div>
+
+    <div>
+        <h3>Audio samples</h3>
+        <div>
+            This is the sample page for our submission <em>'Evaluation of BLE-based Audio Broadcasting under Probabilistic and Simulated Interference'</em> to IEEE Transactions on Multimedia.<br />
+            The goal of these samples is to provide a reader with some examples illustrating the variable listening experience that is expected from audio samples that have a PESQ score either in zone A, B or C.
+            <!-- Reference: <br/>
+                <code>@article{}</code>
+            <br/> -->
+            <br />
+
+            Before encoding, all samples have been rescaled to -26 dB, to provide a more streamlined listening experience over all degraded audio samples.<br />
+            <br />
+
+            Each row presented in the table below contains every PLC technique for a single experiment (i.e. packet loss rate and pattern) on either the male or female audio file. The experiment that is presented in a single row is based on one of the associated PLC techniques leading to a PESQ score in zone A, B or C. The presented PLC techniques are:
+            <ul>
+                <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
+                <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
+                <li><strong>LC3 PLC</strong>: LC3 concealment algorithm based repeating the samples of the last correctly received frame but including random sign scrambling of samples in the frame.</li>
+                <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a concealment algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by whether a pitch is present in the last correctly received frame and the current number of consecutive lost frames.</li>
+                <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the current last correctly received frame.</li>
+            </ul>
+            <br />
+
+            The <strong>Baseline</strong> column contains the audio sample after decoding but without being subjected to any packet loss beforehand.
+        </div>
+
+        <div>
+            <table class="tb" id="samples" style="margin-top:10px; margin-bottom:20px;">
+                <thead>
+                    <tr>
+                        <th>Zone</th>
+                        <th>Audio File</th>
+                        <th>Zero Filling PLC</th>
+                        <th>Repeat Previous PLC</th>
+                        <th>LC3 PLC</th>
+                        <th>LC3 Plus SS PLC</th>
+                        <th>LC3 Plus PLC</th>
+                        <th>Baseline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <br />
+
+        <script>
+            // Top button
+            //Get the button
+            var mybutton = document.getElementById("topBtn");
+
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+            function processData(csvText, isOriginal, dictionary) 
+            {
+                var csvTextLines = csvText.split(/\r\n|\n/);
+                var headers = csvTextLines[0].split(',');
+
+                for (var i=1; i<csvTextLines.length; i++) {
+                    var data = csvTextLines[i].split(',');
+                    if(isOriginal)
+                    {
+                        dictionary[data[0]] = data[3]
+                    }
+                    else
+                    {
+                        dictionary[data[0]][data[4]][data[5]][data[6]][data[1]] = data[7]
+                    }
+                }
+            }
+
+            maleAudioFile = "mic_M01_si453";
+            femaleAudioFile = "mic_F01_sa2";
+
+            audioFiles = [maleAudioFile, femaleAudioFile]
+
+            var scoreOriginalFilePath = "./originalAudio/scoresOutputScaledToMin26dB.csv";
+            var scoreLC3FilePath = "./LC3/Summary/scoresOutput.csv";
+            var scoreLC3PlusFilePath = "./LC3PlusPattern/Summary/scoresOutput.csv";
+            var scoreLC3PlusSSFilePath = "./LC3PlusPatternSS/Summary/scoresOutput.csv";
+            
+            var scoreOriginalDict = {};
+            var scoreLC3Dict = {};
+            var scoreLC3PlusDict = {};
+            var scoreLC3PlusSSDict = {};
+            
+            BIGConfs = ["0", "1", "2", "3", "7"];
+            PERs = ["0.3"];
+            experimentAmount = 10;
+
+            for (BIGConf in BIGConfs)
+            {
+                scoreLC3Dict[BIGConf] = {};
+                scoreLC3PlusDict[BIGConf] = {};
+                scoreLC3PlusSSDict[BIGConf] = {};
+
+                for (PER in PERs)
+                {
+                    scoreLC3Dict[BIGConf][PER] = {};
+                    scoreLC3PlusDict[BIGConf][PER] = {};
+                    scoreLC3PlusSSDict[BIGConf][PER] = {};
+
+                    for (let exp = 0; exp < experimentAmount; exp++) 
+                    {
+                        scoreLC3Dict[BIGConf][PER][exp] = {};
+                        scoreLC3PlusDict[BIGConf][PER][exp] = {};
+                        scoreLC3PlusSSDict[BIGConf][PER][exp] = {};
+
+                        scoreLC3Dict[BIGConf][PER][exp]["AllZeroesPLC"] = {};
+                        scoreLC3Dict[BIGConf][PER][exp]["RepeatPreviousPLC"] = {};
+                        scoreLC3Dict[BIGConf][PER][exp]["Pattern"] = {};
+
+                        scoreLC3PlusDict[BIGConf][PER][exp]["Pattern"] = {};
+                        scoreLC3PlusSSDict[BIGConf][PER][exp]["Pattern"] = {};
+                    }
+                }
+            }
+
+            $(document).ready(function() {
+                $.ajax({
+                    type: "GET",
+                    url: scoreOriginalFilePath,
+                    dataType: "text",
+                    success: function(data) {processData(data, true, scoreOriginalDict);}
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: scoreLC3FilePath,
+                    dataType: "text",
+                    success: function(data) {processData(data, false, scoreLC3Dict);}
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: scoreLC3PlusFilePath,
+                    dataType: "text",
+                    success: function(data) {processData(data, false, scoreLC3PlusDict);}
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: scoreLC3PlusSSFilePath,
+                    dataType: "text",
+                    success: function(data) {processData(data, false, scoreLC3PlusSSDict);}
+                });
+            });
+
+            var maleExpPerPLCPerZone = [ // [BIGConf, PER, exp]
+                // Zone A
+                ["2", "0.3", "5"], // zero filling
+                ["3", "0.3", "8"], // repeat previous
+                ["2", "0.3", "7"], // LC3 PLC
+                ["3", "0.3", "5"], // LC3 Plus SS
+                ["2", "0.3", "4"], // LC3 Plus
+                // Zone B
+                ["2", "0.3", "0"], // zero filling
+                ["2", "0.3", "3"], // repeat previous
+                ["2", "0.3", "1"], // LC3 PLC
+                ["1", "0.3", "0"], // LC3 Plus SS
+                ["1", "0.3", "4"], // LC3 Plus
+                // Zone C
+                ["1", "0.3", "5"], // zero filling
+                ["0", "0.3", "0"], // repeat previous
+                ["0", "0.3", "2"], // LC3 PLC
+                ["1", "0.3", "1"], // LC3 Plus SS
+                ["0", "0.3", "5"] // LC3 Plus
+            ];
+
+            var femaleExpPerPLCPerZone = [ // [BIGConf, PER, exp]
+                // Zone A
+                ["3", "0.3", "5"], // zero filling
+                ["3", "0.3", "2"], // repeat previous
+                ["3", "0.3", "9"], // LC3 PLC
+                ["3", "0.3", "1"], // LC3 Plus SS
+                ["2", "0.3", "4"], // LC3 Plus
+                // Zone B
+                ["2", "0.3", "1"], // zero filling
+                ["2", "0.3", "3"], // repeat previous
+                ["2", "0.3", "0"], // LC3 PLC
+                ["2", "0.3", "5"], // LC3 Plus SS
+                ["1", "0.3", "1"], // LC3 Plus
+                // Zone C
+                ["1", "0.3", "0"], // zero filling
+                ["0", "0.3", "4"], // repeat previous
+                ["0", "0.3", "0"], // LC3 PLC
+                ["0", "0.3", "1"], // LC3 Plus SS
+                ["0", "0.3", "2"] // LC3 Plus
+            ];
+
+            var expsPerAudioFile = {
+                maleAudioFile: maleExpPerPLCPerZone,
+                femaleAudioFile: femaleExpPerPLCPerZone
+            };
+
+            var zoneInfo = [
+                "Zone A",
+                "Zone B",
+                "Zone C"
+            ];
+
+            var PLCMethods = [
+                "AllZeroesPLC",
+                "RepeatPreviousPLC",
+                "Pattern", // LC3
+                "Pattern", // LC3 Plus SS
+                "Pattern", // LC3 Plus
+                "Baseline"
+            ];
+
+            var BIGConfToStr = {
+                "0" : "MandBIGNoDelay",
+                "1" : "MandBIG1RepNoDelay",
+                "2" : "MandBIG2RepNoDelay",
+                "3" : "MandBIG3RepNoDelay",
+                "7" : "MandBIG7RepNoDelay"
+            };
+
+            const elementWidth = '250';
+
+            var tbody = document.getElementById("samples");
+
+            for (let entry = 0; entry < maleExpPerPLCPerZone.length; entry++)
+            {
+                for (audioFile in audioFiles)
+                {
+                    var tr = document.createElement('tr');
+                    tbody.appendChild(tr);
+                    if (entry % 5 == 0)
+                    {
+                        var tdZone = document.createElement('td');
+                        tdZone.setAttribute("rowspan", "5")
+                        tdZone.innerHTML = zoneInfo[entry / 5]
+                        tr.appendChild(tdZone)
+                    }
+
+                    var tdAudioFile = document.createElement('td');
+                    if(audioFile.includes("_M"))
+                    {
+                        tdAudioFile.innerHTML = "Male";
+                    }
+                    else
+                    {
+                        tdAudioFile.innerHTML = "Female";
+                    }
+                    tr.appendChild(tdAudioFile);
+
+                    expRow = expsPerAudioFile[audioFile][entry]
+
+                    for (let PLCIndex = 0; PLCIndex < PLCMethods.length; PLCIndex++)
+                    {
+                        var td = document.createElement("td");
+                        td.width = elementWidth;
+                        tr.appendChild(td);
+
+                        // Find out the audio file path and PESQ score
+                        var pesq = 0;
+                        var audioFilePath = "";
+                        if (PLCIndex < 3)
+                        {
+                            pesq = scoreLC3Dict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
+                            audioFilePath = "./LC3/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000kbps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000kbps" + PLCMethods[PLCIndex] + ".wav";
+                        }
+                        else if (PLCIndex == 3)
+                        {
+                            pesq = scoreLC3PlusSSDict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
+                            audioFilePath = "./LC3PlusPattern/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000kbps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000kbps" + PLCMethods[PLCIndex] + ".wav";
+                        }
+                        else if (PLCIndex == 4)
+                        {
+                            pesq = scoreLC3PlusDict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
+                            audioFilePath = "./LC3PlusPatternSS/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000kbps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000kbps" + PLCMethods[PLCIndex] + ".wav";
+                        }
+                        else
+                        {
+                            pesq = scoreOriginalDict[audioFile];
+                            audioFilePath = "./originalAudio/degradedWavFilesScaledToMin26dB/" + audioFile + "_10ms_32000kbps_decoded.wav"; 
+                        }
+
+                        // Add the audio
+                        var audio = document.createElement("audio");
+                        audio.src = audioFilePath;
+                        audio.controls = true;
+                        audio.style.width = elementWidth;
+                        td.appendChild(audio);
+
+                        // Add the PESQ score
+                        var textnode = document.createTextNode("PESQ: " + pesq);
+                        if (PLCIndex < 5 && entry % PLCIndex) // Current PLC method from which the score was taken related to the zone (excluding baseline)
+                        {
+                            var score = document.createElement('strong');
+                            score.appendChild(textnode);
+                        }
+                        else
+                        {
+                            var score = textnode;
+                        }
+                        td.appendChild(score);
+                    }
+                }
+            }
+        </script>
+</body>
