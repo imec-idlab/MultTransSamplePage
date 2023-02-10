@@ -152,25 +152,36 @@
                 var csvTextLines = csvText.split(/\r\n|\n/);
                 var headers = csvTextLines[0].split(',');
 
+                console.log(csvTextLines.length)
+
                 for (var i=1; i<csvTextLines.length; i++) {
                     var data = csvTextLines[i].split(',');
 
-                    console.log(data)
                     if(isOriginal)
                     {
-                        dictionary[data[0]] = data[3]
+                        if(data.length != 5)
+                        {
+                            continue;
+                        }
+
+                        dictionary[data[0]] = data[3];
                     }
                     else
                     {
-                        dictionary[data[0]][data[4]][data[5]][data[6]][data[1]] = data[7]
+                        if(data.length != 9)
+                        {
+                            continue;
+                        }
+
+                        dictionary[data[0]][data[4]][data[5]][data[6]][data[1]] = data[7];
                     }
                 }
             }
 
-            maleAudioFile = "mic_M01_si453";
-            femaleAudioFile = "mic_F01_sa2";
+            var maleAudioFile = "mic_M01_si453";
+            var femaleAudioFile = "mic_F01_sa2";
 
-            audioFiles = [maleAudioFile, femaleAudioFile]
+            var audioFiles = [maleAudioFile, femaleAudioFile];
 
             var scoreOriginalFilePath = "./originalAudio/scoresOutputScaledToMin26dB.csv";
             var scoreLC3FilePath = "./LC3/Summary/scoresOutput.csv";
@@ -182,18 +193,22 @@
             var scoreLC3PlusDict = {};
             var scoreLC3PlusSSDict = {};
             
-            BIGConfs = ["0", "1", "2", "3", "7"];
-            PERs = ["0.3"];
-            experimentAmount = 10;
+            var BIGConfs = ["0", "1", "2", "3", "7"];
+            var PERs = ["0.3"];
+            var experimentAmount = 10;
 
-            for (BIGConf in BIGConfs)
+            for (let BIGConfInd in BIGConfs)
             {
+                BIGConf = BIGConfs[BIGConfInd];
+                
                 scoreLC3Dict[BIGConf] = {};
                 scoreLC3PlusDict[BIGConf] = {};
                 scoreLC3PlusSSDict[BIGConf] = {};
 
-                for (PER in PERs)
+                for (let PERInd in PERs)
                 {
+                    PER = PERs[PERInd];
+
                     scoreLC3Dict[BIGConf][PER] = {};
                     scoreLC3PlusDict[BIGConf][PER] = {};
                     scoreLC3PlusSSDict[BIGConf][PER] = {};
@@ -282,10 +297,9 @@
                         ["0", "0.3", "2"] // LC3 Plus
                     ];
 
-                    var expsPerAudioFile = {
-                        maleAudioFile: maleExpPerPLCPerZone,
-                        femaleAudioFile: femaleExpPerPLCPerZone
-                    };
+                    var expsPerAudioFile = {};
+                    expsPerAudioFile[maleAudioFile] = maleExpPerPLCPerZone;
+                    expsPerAudioFile[femaleAudioFile] = femaleExpPerPLCPerZone;
 
                     var zoneInfo = [
                         "Zone A",
@@ -310,22 +324,26 @@
                         "7" : "MandBIG7RepNoDelay"
                     };
 
+                    console.log(expsPerAudioFile);
+
                     const elementWidth = '250';
 
                     var tbody = document.getElementById("samples");
 
                     for (let entry = 0; entry < maleExpPerPLCPerZone.length; entry++)
                     {
-                        for (audioFile in audioFiles)
+                        for (audioFileInd in audioFiles)
                         {
+                            audioFile = audioFiles[audioFileInd];
+
                             var tr = document.createElement('tr');
                             tbody.appendChild(tr);
-                            if (entry % 5 == 0)
+                            if (entry % 5 == 0 && audioFileInd == 0)
                             {
                                 var tdZone = document.createElement('td');
-                                tdZone.setAttribute("rowspan", "5")
-                                tdZone.innerHTML = zoneInfo[entry / 5]
-                                tr.appendChild(tdZone)
+                                tdZone.setAttribute("rowspan", 5 * audioFiles.length);
+                                tdZone.innerHTML = zoneInfo[entry / 5];
+                                tr.appendChild(tdZone);
                             }
 
                             var tdAudioFile = document.createElement('td');
@@ -353,22 +371,22 @@
                                 if (PLCIndex < 3)
                                 {
                                     pesq = scoreLC3Dict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
-                                    audioFilePath = "./LC3/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000kbps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000kbps" + PLCMethods[PLCIndex] + ".wav";
+                                    audioFilePath = "./LC3/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000bps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000bps" + PLCMethods[PLCIndex] + ".wav";
                                 }
                                 else if (PLCIndex == 3)
                                 {
                                     pesq = scoreLC3PlusSSDict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
-                                    audioFilePath = "./LC3PlusPattern/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000kbps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000kbps" + PLCMethods[PLCIndex] + ".wav";
+                                    audioFilePath = "./LC3PlusPattern/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000bps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000bps" + PLCMethods[PLCIndex] + ".wav";
                                 }
                                 else if (PLCIndex == 4)
                                 {
                                     pesq = scoreLC3PlusDict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
-                                    audioFilePath = "./LC3PlusPatternSS/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000kbps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000kbps" + PLCMethods[PLCIndex] + ".wav";
+                                    audioFilePath = "./LC3PlusPatternSS/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000bps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000bps" + PLCMethods[PLCIndex] + ".wav";
                                 }
                                 else
                                 {
                                     pesq = scoreOriginalDict[audioFile];
-                                    audioFilePath = "./originalAudio/degradedWavFilesScaledToMin26dB/" + audioFile + "_10ms_32000kbps_decoded.wav"; 
+                                    audioFilePath = "./originalAudio/degradedWavFilesScaledToMin26dB/" + audioFile + "_10ms_32000bps_decoded.wav"; 
                                 }
 
                                 // Add the audio
@@ -380,7 +398,7 @@
 
                                 // Add the PESQ score
                                 var textnode = document.createTextNode("PESQ: " + pesq);
-                                if (PLCIndex < 5 && entry % PLCIndex) // Current PLC method from which the score was taken related to the zone (excluding baseline)
+                                if (PLCIndex < 5 && ((entry % 5) == PLCIndex)) // Current PLC method from which the score was taken related to the zone (excluding baseline)
                                 {
                                     var score = document.createElement('strong');
                                     score.appendChild(textnode);
