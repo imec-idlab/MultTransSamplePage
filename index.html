@@ -4,7 +4,7 @@
     <title>Audio Samples</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="shortcut icon" href="#">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="theme-color" content="#ffffff">
     <style>
         /* .logo {
@@ -16,10 +16,9 @@
             text-transform: capitalize;
         }*/
 
-        /* body {
+        body {
             margin: 20;
-            font-family: Arial, Helvetica, sans-serif;
-        } */
+        }
 
         #topBtn {
             display: none;
@@ -81,7 +80,7 @@
 
         <div class="row">
             <h3>Audio Samples</h3>
-            <p class="text-start">
+            <p>
                 This is the sample page for our submission <em>'Evaluation of BLE-based Audio Broadcasting under Probabilistic Interference'</em> to IEEE Transactions on Multimedia.<br />
                 The goal of these samples is to provide a reader with examples illustrating the variable listening experience that is expected from audio samples that have a PESQ score either in zone A, B or C.
                 <!-- Reference: <br/>
@@ -101,16 +100,16 @@
                 The presented PLC techniques are:
             </p>
 
-                <ul>
+                <ul style="margin-left: 50px;">
                     <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
                     <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
                     <li><strong>LC3 PLC</strong>: LC3 concealment algorithm based on repeating the samples of the last correctly received frame but including random sign scrambling of samples in the frame.</li>
                     <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a concealment algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
                     <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the current last correctly received frame.</li>
                 </ul>
-                <br />
+            <br />
             
-            <p class="text-start">
+            <p>
                 The <strong>Baseline</strong> column contains the audio sample after decoding but without being subjected to any packet loss beforehand.
             </p>
         </div>
