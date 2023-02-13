@@ -76,70 +76,62 @@
     </div> -->
     <div class = "container-fluid">
         <div class="row">
-            <div class="col">
-                <img src="./img/logo_combination.png" style="width: 35em;">
-            </div>
-            <div class="col"></div>
+            <img src="./img/logo_combination.png" style="width: 35em;">
         </div>
 
         <div class="row">
-            <div class="col">
-                <h3>Audio Samples</h3>
-                <p class="text-start">
-                    This is the sample page for our submission <em>'Evaluation of BLE-based Audio Broadcasting under Probabilistic Interference'</em> to IEEE Transactions on Multimedia.<br />
-                    The goal of these samples is to provide a reader with examples illustrating the variable listening experience that is expected from audio samples that have a PESQ score either in zone A, B or C.
-                    <!-- Reference: <br/>
-                        <code>@article{}</code>
-                    <br/> -->
-                    <br />
-                    <br />
+            <h3>Audio Samples</h3>
+            <p class="text-start">
+                This is the sample page for our submission <em>'Evaluation of BLE-based Audio Broadcasting under Probabilistic Interference'</em> to IEEE Transactions on Multimedia.<br />
+                The goal of these samples is to provide a reader with examples illustrating the variable listening experience that is expected from audio samples that have a PESQ score either in zone A, B or C.
+                <!-- Reference: <br/>
+                    <code>@article{}</code>
+                <br/> -->
+                <br />
+                <br />
 
-                    Before encoding, all samples have been rescaled to -26 dB, to provide a more streamlined listening experience over all degraded audio samples.<br />
-                    <br />
+                Before encoding, all samples have been rescaled to -26 dB, to provide a more streamlined listening experience over all degraded audio samples.<br />
+                <br />
 
-                    Each row presented in the table below contains every PLC technique for a single experiment (i.e. packet loss rate and pattern) on either the male or female audio file. The experiment that is presented in a single row is based on one of the associated PLC techniques leading to a PESQ score in zone A, B or C. The PESQ score of the cell containing the PLC technique on which the current row's experiment selection is based, is indicated in <strong style="color: teal;">bold green</strong>. 
-                    
-                    <br />
-                    <br />
-
-                    The presented PLC techniques are:
-                </p>
-
-                    <ul>
-                        <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
-                        <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
-                        <li><strong>LC3 PLC</strong>: LC3 concealment algorithm based on repeating the samples of the last correctly received frame but including random sign scrambling of samples in the frame.</li>
-                        <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a concealment algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
-                        <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the current last correctly received frame.</li>
-                    </ul>
-                    <br />
+                Each row presented in the table below contains every PLC technique for a single experiment (i.e. packet loss rate and pattern) on either the male or female audio file. The experiment that is presented in a single row is based on one of the associated PLC techniques leading to a PESQ score in zone A, B or C. The PESQ score of the cell containing the PLC technique on which the current row's experiment selection is based, is indicated in <strong style="color: teal;">bold green</strong>. 
                 
-                <p class="text-start">
-                    The <strong>Baseline</strong> column contains the audio sample after decoding but without being subjected to any packet loss beforehand.
-                </p>
-            </div>
+                <br />
+                <br />
+
+                The presented PLC techniques are:
+            </p>
+
+                <ul>
+                    <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
+                    <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
+                    <li><strong>LC3 PLC</strong>: LC3 concealment algorithm based on repeating the samples of the last correctly received frame but including random sign scrambling of samples in the frame.</li>
+                    <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a concealment algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
+                    <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the current last correctly received frame.</li>
+                </ul>
+                <br />
+            
+            <p class="text-start">
+                The <strong>Baseline</strong> column contains the audio sample after decoding but without being subjected to any packet loss beforehand.
+            </p>
         </div>
 
         <div class="row">
-            <div class="col">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Zone</th>
-                            <th>Audio File</th>
-                            <th>Zero Filling PLC</th>
-                            <th>Repeat Previous PLC</th>
-                            <th>LC3 PLC</th>
-                            <th>LC3 Plus SS PLC</th>
-                            <th>LC3 Plus PLC</th>
-                            <th>Baseline</th>
-                        </tr>
-                    </thead>
-                    <tbody id="samples">
-                    </tbody>
-                </table>
-            </div>
-            <!-- <div class="col"></div> -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Zone</th>
+                        <th>Audio File</th>
+                        <th>Zero Filling PLC</th>
+                        <th>Repeat Previous PLC</th>
+                        <th>LC3 PLC</th>
+                        <th>LC3 Plus SS PLC</th>
+                        <th>LC3 Plus PLC</th>
+                        <th>Baseline</th>
+                    </tr>
+                </thead>
+                <tbody id="samples">
+                </tbody>
+            </table>
         </div>
     </div>
         <script>
