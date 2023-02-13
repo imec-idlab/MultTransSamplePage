@@ -2,23 +2,24 @@
 
 <head>
     <title>Audio Samples</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="shortcut icon" href="#">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
     <style>
-        .logo {
+        /* .logo {
             margin-left: 5px;
         }
 
         .case {
             font-weight: bold;
             text-transform: capitalize;
-        }
+        }*/
 
-        body {
+        /* body {
             margin: 20;
             font-family: Arial, Helvetica, sans-serif;
-        }
+        } */
 
         #topBtn {
             display: none;
@@ -40,7 +41,7 @@
             background-color: #3265C2;
         }
 
-        table {
+        /* table {
             border-collapse: collapse;
         }
 
@@ -49,20 +50,21 @@
             background-color: #3265C2;
             color: white;
             height: 30px;
-        }
+        } */
 
-        td {
+        /*td {
             text-align: center;
         }
 
         tr {
             border-bottom: 2px solid black;
-        }
+        } */
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
 
     <!-- <div>
@@ -72,66 +74,72 @@
     <!-- <div class="row">
         
     </div> -->
+    <div class = "container-fluid">
+        <div class="row">
+            <div class="col">
+                <img src="./img/logo_combination.png" style="width: 35em;">
+            </div>
+            <div class="col"></div>
+        </div>
 
-    <div class="logo">
-        <img src="./img/logo_ugent.png" style="width:10em; height:8em;transform:translateY(-25%);">
-        <img src="./img/logo_imec.png" style="width:8em; height:3em;transform:translateY(-150%);">
-        <img src="./img/logo_IDLab.png" style="width:16em; height:12em;">
-    </div>
+        <div class="row">
+            <h3>Audio Samples</h3>
+            <p class="text-start">
+                This is the sample page for our submission <em>'Evaluation of BLE-based Audio Broadcasting under Probabilistic Interference'</em> to IEEE Transactions on Multimedia.<br />
+                The goal of these samples is to provide a reader with examples illustrating the variable listening experience that is expected from audio samples that have a PESQ score either in zone A, B or C.
+                <!-- Reference: <br/>
+                    <code>@article{}</code>
+                <br/> -->
+                <br />
+                <br />
 
-    <div>
-        <h3>Audio samples</h3>
-        <div>
-            This is the sample page for our submission <em>'Evaluation of BLE-based Audio Broadcasting under Probabilistic Interference'</em> to IEEE Transactions on Multimedia.<br />
-            The goal of these samples is to provide a reader with examples illustrating the variable listening experience that is expected from audio samples that have a PESQ score either in zone A, B or C.
-            <!-- Reference: <br/>
-                <code>@article{}</code>
-            <br/> -->
-            <br />
-            <br />
+                Before encoding, all samples have been rescaled to -26 dB, to provide a more streamlined listening experience over all degraded audio samples.<br />
+                <br />
 
-            Before encoding, all samples have been rescaled to -26 dB, to provide a more streamlined listening experience over all degraded audio samples.<br />
-            <br />
+                Each row presented in the table below contains every PLC technique for a single experiment (i.e. packet loss rate and pattern) on either the male or female audio file. The experiment that is presented in a single row is based on one of the associated PLC techniques leading to a PESQ score in zone A, B or C. The PESQ score of the cell containing the PLC technique on which the current row's experiment selection is based, is indicated in <strong style="color: teal;">bold green</strong>. 
+                
+                <br />
+                <br />
 
-            Each row presented in the table below contains every PLC technique for a single experiment (i.e. packet loss rate and pattern) on either the male or female audio file. The experiment that is presented in a single row is based on one of the associated PLC techniques leading to a PESQ score in zone A, B or C. The PESQ score of the cell containing the PLC technique on which the current row's experiment selection is based, is indicated in <strong style="color: teal;">bold green</strong>. 
+                The presented PLC techniques are:
+            </p>
+
+                <ul>
+                    <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
+                    <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
+                    <li><strong>LC3 PLC</strong>: LC3 concealment algorithm based on repeating the samples of the last correctly received frame but including random sign scrambling of samples in the frame.</li>
+                    <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a concealment algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
+                    <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the current last correctly received frame.</li>
+                </ul>
+                <br />
             
-            <br />
-            <br />
-
-            The presented PLC techniques are:
-            <ul>
-                <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
-                <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
-                <li><strong>LC3 PLC</strong>: LC3 concealment algorithm based on repeating the samples of the last correctly received frame but including random sign scrambling of samples in the frame.</li>
-                <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a concealment algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
-                <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the current last correctly received frame.</li>
-            </ul>
-            <br />
-
-            The <strong>Baseline</strong> column contains the audio sample after decoding but without being subjected to any packet loss beforehand.
+            <p class="text-start">
+                The <strong>Baseline</strong> column contains the audio sample after decoding but without being subjected to any packet loss beforehand.
+            </p>
         </div>
 
-        <div>
-            <table class="tb" id="samples" style="margin-top:10px; margin-bottom:20px;">
-                <thead>
-                    <tr>
-                        <th>Zone</th>
-                        <th>Audio File</th>
-                        <th>Zero Filling PLC</th>
-                        <th>Repeat Previous PLC</th>
-                        <th>LC3 PLC</th>
-                        <th>LC3 Plus SS PLC</th>
-                        <th>LC3 Plus PLC</th>
-                        <th>Baseline</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-md-5">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Zone</th>
+                            <th>Audio File</th>
+                            <th>Zero Filling PLC</th>
+                            <th>Repeat Previous PLC</th>
+                            <th>LC3 PLC</th>
+                            <th>LC3 Plus SS PLC</th>
+                            <th>LC3 Plus PLC</th>
+                            <th>Baseline</th>
+                        </tr>
+                    </thead>
+                    <tbody id="samples">
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="col"></div> -->
         </div>
-
-        <br />
-
+    </div>
         <script>
             // Top button
             //Get the button
@@ -158,8 +166,6 @@
             {
                 var csvTextLines = csvText.split(/\r\n|\n/);
                 var headers = csvTextLines[0].split(',');
-
-                console.log(csvTextLines.length)
 
                 for (var i=1; i<csvTextLines.length; i++) {
                     var data = csvTextLines[i].split(',');
@@ -309,9 +315,9 @@
                     expsPerAudioFile[femaleAudioFile] = femaleExpPerPLCPerZone;
 
                     var zoneInfo = [
-                        "Zone A",
-                        "Zone B",
-                        "Zone C"
+                        "A",
+                        "B",
+                        "C"
                     ];
 
                     var PLCMethods = [
@@ -330,8 +336,6 @@
                         "3" : "MandBIG3RepNoDelay",
                         "7" : "MandBIG7RepNoDelay"
                     };
-
-                    console.log(expsPerAudioFile);
 
                     const elementWidth = '250';
 
