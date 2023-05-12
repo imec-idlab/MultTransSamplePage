@@ -103,7 +103,7 @@
                 <ul style="margin-left: 50px;">
                     <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
                     <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
-                    <li><strong>LC3 PLC</strong>: PLC algorithm based on repeating the last correctly received frame but applying random sign scrambling to spectral coefficients in the frame.</li>
+                    <li><strong>LC3 PLC</strong>: PLC algorithm based on repeating the last correctly received frame but applying random sign scrambling on it too.</li>
                     <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a PLC algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
                     <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the last correctly received frame.</li>
                 </ul>
