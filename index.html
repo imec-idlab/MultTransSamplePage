@@ -92,7 +92,7 @@
                 Before encoding, all samples have been rescaled to -26 dB, to provide a more streamlined listening experience over all degraded audio samples.<br />
                 <br />
 
-                Each row presented in the table below contains every PLC technique for a single experiment (i.e. packet loss rate and pattern) on either the male or female audio file. The experiment that is presented in a single row is based on one of the associated PLC techniques leading to a PESQ score in zone A, B or C. The PESQ score of the cell containing the PLC technique on which the current row's experiment selection is based, is indicated in <strong style="color: teal;">bold green</strong>. 
+                Each row presented in the table below contains every Packet Loss Concealment (PLC) technique for a single experiment (i.e. packet loss rate and pattern) on either the male or female audio file. The experiment that is presented in a single row is based on one of the associated PLC techniques leading to a PESQ score in zone A, B or C. The PESQ score of the cell containing the PLC technique on which the current row's experiment selection is based, is indicated in <strong style="color: teal;">bold green</strong>. 
                 
                 <br />
                 <br />
@@ -103,9 +103,9 @@
                 <ul style="margin-left: 50px;">
                     <li><strong>Zero Filling PLC</strong>: Filling up lost frames with all zeroes.</li>
                     <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
-                    <li><strong>LC3 PLC</strong>: LC3 concealment algorithm based on repeating the samples of the last correctly received frame but including random sign scrambling of samples in the frame.</li>
-                    <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a concealment algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
-                    <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the current last correctly received frame.</li>
+                    <li><strong>LC3 PLC</strong>: PLC algorithm based on repeating the last correctly received frame but applying random sign scrambling to spectral coefficients in the frame.</li>
+                    <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a PLC algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
+                    <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the last correctly received frame.</li>
                 </ul>
             <br />
             
