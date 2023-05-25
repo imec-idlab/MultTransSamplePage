@@ -105,7 +105,7 @@
                     <li><strong>Repeat Previous PLC</strong>: Replacing lost frame(s) with the last correctly received frame.</li>
                     <li><strong>LC3 PLC</strong>: PLC algorithm based on repeating the last correctly received frame but applying random sign scrambling on it too.</li>
                     <li><strong>LC3 Plus Sign Scrambling (SS) PLC</strong>: Employing the LC3 Plus version of a PLC algorithm based on sign scrambling for all lost frames. The decision to perform sign scrambling or not, is now also influenced by the current number of consecutive lost frames and whether a pitch is present in the last correctly received frame.</li>
-                    <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per lost burst based on several characteristics in the last correctly received frame.</li>
+                    <li><strong>LC3 Plus PLC</strong>: Complete LC3 Plus PLC feature set, i.e. deciding on one of three concealment approaches per loss burst based on several characteristics in the last correctly received frame(s).</li>
                 </ul>
             <br />
             
@@ -391,12 +391,12 @@
                                 else if (PLCIndex == 3)
                                 {
                                     pesq = scoreLC3PlusSSDict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
-                                    audioFilePath = "./LC3PlusPattern/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000bps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000bps" + PLCMethods[PLCIndex] + ".wav";
+                                    audioFilePath = "./LC3PlusPatternSS/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000bps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000bps" + PLCMethods[PLCIndex] + ".wav";
                                 }
                                 else if (PLCIndex == 4)
                                 {
                                     pesq = scoreLC3PlusDict[expRow[0]][expRow[1]][expRow[2]][PLCMethods[PLCIndex]][audioFile];
-                                    audioFilePath = "./LC3PlusPatternSS/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000bps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000bps" + PLCMethods[PLCIndex] + ".wav";
+                                    audioFilePath = "./LC3PlusPattern/" + BIGConfToStr[expRow[0]] + "/PerBinary/" + audioFile + "_10ms_32000bps/" + expRow[1] + "/" + expRow[2] + "/" + audioFile + "_10ms_32000bps" + PLCMethods[PLCIndex] + ".wav";
                                 }
                                 else
                                 {
